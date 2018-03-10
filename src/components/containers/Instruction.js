@@ -24,6 +24,8 @@ class Instruction extends Component{
       buttonText: "Start"
     }
     // if settingUp is false give the first instruction
+    console.log('instruction')
+    console.log(this.props.instruction)
     var currentInstruction = !this.props.instruction ? instruction1 : instruction2
     return(
       <div style={style.instructions} className='instruction'>

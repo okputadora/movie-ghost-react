@@ -8,29 +8,39 @@ import BreadCrumbs from '../containers/BreadCrumbs'
 class Game extends Component {
   constructor(props){
     super(props)
-    this.state
-    this.settingUp = false
-    this.gameOn = false
+    this.state = {
+      oppSelected: false,
+      gameOn: false,
+    }
     console.log(this)
   }
 
   startGame(){
-    console.log(this.settingUp)
-    if (this.settingUp === false){
-      this.settingUp = true
+    // first click -- will display the opponent selection UI
+    if (this.state.oppSelected === false){
+      var oppSelected = true
+      this.setState({
+        oppSelected: oppSelected,
+      })
     }
-    else if(this.gameOn === false){
-      this.gameOn = true;
+    // second click -- will display the game UI
+    else if(this.state.gameOn === false){
+      var gameOn = true;
+      this.setState({
+        gameOn: gameOn,
+      })
     }
-    this.setState({})
+    console.log(this.state.oppSelected)
+
   }
   render(){
     // if we're not playing then we're starting the Game
-    // pass settingUp to Instruction so it knows which
-    // instruction to give
-    if (this.gameOn === false){
+    // pass oppSelected to Instruction so it knows which
+    // instruction to give...if opponents have not been selected we render
+    // the opponent selection scree, else we render the game
+    if (this.state.gameOn === false){
       var content = <Instruction
-        instruction={this.settingUp}
+        instruction={this.state.oppSelected}
         onClick={() => this.startGame()}>
       </Instruction>
     }

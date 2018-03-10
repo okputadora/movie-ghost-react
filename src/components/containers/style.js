@@ -8,8 +8,19 @@ export default {
   },
 
   instructions: {
-    border: '1px solid red',
+    // border: '1px solid red',
     width: '600px',
-    marginTop: '100px'
+    marginTop: '100px',
+    letterSpacing: '.08em'
+  },
+
+  button: {
+    backgroundColor: '#222',
+    color: 'white',
+    border: '1px solid grey',
+    marginTop: '20px',
+    padding: '10px',
+    letterSpacing: '.1em'
   }
+
 }
