@@ -8,15 +8,21 @@ import BreadCrumbs from '../containers/BreadCrumbs'
 class Game extends Component {
   constructor(props){
     super(props)
+    this.state
     this.settingUp = false
     this.gameOn = false
     console.log(this)
   }
 
-  getOpponents(){
-    console.log("hello")
-    console.log(this)
-    this.settingUp = true
+  startGame(){
+    console.log(this.settingUp)
+    if (this.settingUp === false){
+      this.settingUp = true
+    }
+    else if(this.gameOn === false){
+      this.gameOn = true;
+    }
+    this.setState({})
   }
   render(){
     // if we're not playing then we're starting the Game
@@ -25,7 +31,7 @@ class Game extends Component {
     if (this.gameOn === false){
       var content = <Instruction
         instruction={this.settingUp}
-        onClick={this.getOpponents}>
+        onClick={() => this.startGame()}>
       </Instruction>
     }
     else{
