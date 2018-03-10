@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import style from './style.js'
 import Button from '../presentation/Button'
+import OppOpt from '../presentation/OppOpt'
 class Instruction extends Component{
   render(){
     const instruction1 = {
@@ -16,22 +17,30 @@ class Instruction extends Component{
         you get a letter (like HORSE, except we're spelling GHOST)`,
       buttonText: "Select Opponents"
     }
+    var opponentOptions = []
+    for (var i = 0; i < 4; i++){
+      opponentOptions.push(<OppOpt i={i}/>)
+    }
     const instruction2 = {
       title: "Select Opponents",
       text: `Pick some opponents. We recommend having an odd number
         of opponents so that on each turn you're alternating between having to come
         up with a movie and an actor`,
-      buttonText: "Start"
+      buttonText: "Start",
+      opps: opponentOptions
     }
-    // if settingUp is false give the first instruction
-    console.log('instruction')
+    // if oppSelected is false give the first instruction
     console.log(this.props.instruction)
     var currentInstruction = !this.props.instruction ? instruction1 : instruction2
     return(
-      <div style={style.instructions} className='instruction'>
-        <h3>{currentInstruction.title}</h3>
-        <p>{currentInstruction.text}</p>
-        <Button text={currentInstruction.buttonText} onClick={this.props.onClick}></Button>
+      <div style={style.instructions}>
+        <div style={style.flexCol} className='instructions'>
+          <h3>{currentInstruction.title}</h3>
+          <p>{currentInstruction.text}</p>
+          {/* this list will only populate with instruction 2 */}
+          <ul>{currentInstruction.opps}</ul>
+          <Button text={currentInstruction.buttonText} onClick={() => this.props.onClick("I want this to be the checkbox data frop OppOpt")}></Button>
+        </div>
       </div>
     )
   }

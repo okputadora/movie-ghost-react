@@ -15,7 +15,8 @@ class Game extends Component {
     console.log(this)
   }
 
-  startGame(){
+  startGame(param){
+    console.log(param)
     // first click -- will display the opponent selection UI
     if (this.state.oppSelected === false){
       var oppSelected = true
@@ -41,7 +42,7 @@ class Game extends Component {
     if (this.state.gameOn === false){
       var content = <Instruction
         instruction={this.state.oppSelected}
-        onClick={() => this.startGame()}>
+        onClick={(param) => this.startGame(param)}>
       </Instruction>
     }
     else{
